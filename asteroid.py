@@ -7,10 +7,12 @@ from constants import ASTEROID_MIN_RADIUS
 class Asteroid(CircleShape):
     def __init__(self, x, y, radius):
         super().__init__(x, y, radius)
-        self.color = (random.randrange(256), random.randrange(256), random.randrange(256))
+        self.fill_color = (random.randrange(256), random.randrange(256), random.randrange(256))
+        self.border_color = "white"
     
     def draw(self, screen):
-        pygame.draw.circle(screen, self.color, self.position, self.radius, 0)
+        pygame.draw.circle(screen, self.fill_color, self.position, self.radius, 0)
+        pygame.draw.circle(screen, self.border_color, self.position, self.radius, 2)
     
     def update(self, dt):
         self.position += (self.velocity * dt)
