@@ -18,6 +18,12 @@ class Asteroid(CircleShape):
         self.position += (self.velocity * dt)
     
     def split(self):
+        pygame.mixer.music.load("./sounds/asteroid_explosion.wav")
+        pygame.mixer.music.set_volume(0.4)
+        pygame.mixer.music.play()
+        self.split_to_pieces()
+    
+    def split_to_pieces(self):
         self.kill()
         if self.radius <= ASTEROID_MIN_RADIUS:
             return
@@ -29,3 +35,6 @@ class Asteroid(CircleShape):
         asteroid_left.velocity = vector_left * 1.3
         asteroid_right = Asteroid(self.position.x, self.position.y, new_radius)
         asteroid_right.velocity = vector_right
+    
+    def destroy(self):
+        self.split_to_pieces()

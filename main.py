@@ -18,6 +18,7 @@ def main():
     dt = 0
 
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    pygame.mixer.init()
 
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
@@ -45,8 +46,7 @@ def main():
             s.draw(screen)
         for asteroid in asteroids:
             if asteroid.collides_with(player):
-                print("Game over!")
-                sys.exit()
+                end_game(player, asteroid)
             for shot in shots:
                 if asteroid.collides_with(shot):
                     asteroid.split()
@@ -56,6 +56,11 @@ def main():
         pygame.display.flip()
         dt = clock.tick(60) / 1000
 
+def end_game(player, asteroid):
+    player.destroy()
+    pygame.time.delay(3000)
+    print("GAME OVER")
+    sys.exit()
 
 if __name__ == "__main__":
     main()

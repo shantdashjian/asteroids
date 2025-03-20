@@ -50,4 +50,12 @@ class Player(CircleShape):
                 pygame.Vector2(0, 1).rotate(self.rotation) * PLAYER_SHOOT_SPEED
             )
             self.timer = PLAYER_SHOOT_COOLDOWN
+            pygame.mixer.music.load("./sounds/laser_shot.wav")
+            pygame.mixer.music.set_volume(0.4)
+            pygame.mixer.music.play()
+
+    def destroy(self):
+        pygame.mixer.music.load("./sounds/player_explosion.wav")
+        pygame.mixer.music.set_volume(0.4)
+        pygame.mixer.music.play()
 
