@@ -1,16 +1,21 @@
 import sys
 import pygame
+import asyncio
+
 from constants import *
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
 from shot import Shot
 
+import os
+os.environ['SDL_VIDEO_HIGHDPI_DISABLED'] = '1'
 
-def main():
-    pygame.init()
-    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-    clock = pygame.time.Clock()
+pygame.init()
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+clock = pygame.time.Clock()
+
+async def main():
     dt = 0
 
     updatable = pygame.sprite.Group()
@@ -52,7 +57,7 @@ def main():
 
         pygame.display.flip()
         dt = clock.tick(60) / 1000
+        await asyncio.sleep(0)
 
 
-if __name__ == "__main__":
-    main()
+asyncio.run(main())
