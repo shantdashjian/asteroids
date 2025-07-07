@@ -2,7 +2,8 @@
 
 A colorful version of the classic video game of Asteroids.
 
-![demo](assets/demo.png)
+[<img src="assets/demo.png">](https://shantdashjian.github.io/asteroids/)
+
 
 ## 🤔 Motivation
 ⏰ To take a break from work or study, let's kill some asteroids! You're in a spaceship in outer space, in a galaxy so far away! A field of asteroids is coming your way and you must survive!
