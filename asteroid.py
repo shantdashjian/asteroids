@@ -8,9 +8,12 @@ from constants import *
 class Asteroid(CircleShape):
     def __init__(self, x, y, radius):
         super().__init__(x, y, radius)
+        self.fill_color = pygame.Color(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+        self.border_color = pygame.Color(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
 
     def draw(self, screen):
-        pygame.draw.circle(screen, "white", self.position, self.radius, 2)
+        pygame.draw.circle(screen, self.fill_color, self.position, self.radius, 0)
+        pygame.draw.circle(screen, self.border_color, self.position, self.radius, 4)
     
     def update(self, dt):
         self.position += (self.velocity * dt)
